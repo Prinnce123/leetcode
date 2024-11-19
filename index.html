@@ -201,9 +201,11 @@
 
         // Check if the user is on a mobile device (screen width <= 768px)
         if (window.innerWidth <= 768) {
-          window.location.href = url; // Opens in the same tab on mobile
+          // Opens in the same tab on mobile
+          window.location.href = url;
         } else {
-          window.open(url, "_blank"); // Opens in a new tab on computer
+          // Opens in a new tab on computers
+          window.open(url, '_blank'); // Ensure this works on desktop
         }
       } else {
         alert("Please enter a valid username.");
