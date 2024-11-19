@@ -10,65 +10,91 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f3f4f6;
+      background: #f4f7fa;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       transition: background 0.3s, color 0.3s;
     }
+
+    /* Container Style */
     .container {
       text-align: center;
       background: white;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      max-width: 400px;
-      width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      width: 100%;
+      transition: all 0.3s ease-in-out;
     }
+
     h1 {
-      margin-bottom: 1rem;
       color: #333;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
+
+    /* Input Box */
     input {
-      width: 80%;
-      max-width: 300px;
-      padding: 0.5rem;
+      width: 85%;
+      max-width: 350px;
+      padding: 0.8rem;
       margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      border: 2px solid #ccc;
+      border-radius: 12px;
       font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
     }
+
+    input:focus {
+      border-color: #0078D4;
+    }
+
+    /* Buttons */
     button {
-      padding: 0.5rem 1rem;
-      background: #0078D4;
+      padding: 0.7rem 1.5rem;
+      background-color: #0078D4;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-bottom: 1rem;
     }
+
     button:hover {
-      background: #005BB5;
+      background-color: #005BB5;
+      transform: scale(1.05);
     }
+
     button:disabled {
-      background: #ccc;
+      background-color: #ccc;
       cursor: not-allowed;
     }
+
+    /* Dark Mode Styles */
     .dark-mode {
       background: #121212;
       color: #e0e0e0;
     }
+
     .dark-mode input {
       background: #333;
       color: white;
       border-color: #555;
     }
+
     .dark-mode button {
-      background: #1E88E5;
+      background-color: #1E88E5;
     }
+
     .dark-mode button:hover {
-      background: #1565C0;
+      background-color: #1565C0;
     }
 
     /* Modal Styles */
@@ -84,6 +110,7 @@
       align-items: center;
       z-index: 1000;
     }
+
     .modal-content {
       background: white;
       width: 90%;
@@ -93,11 +120,7 @@
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
-    .modal-content iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+
     .modal-close {
       position: absolute;
       top: 10px;
@@ -111,12 +134,28 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1rem;
+      font-size: 1.5rem;
       cursor: pointer;
       outline: none;
     }
+
     .modal-close:hover {
       background: #ff0000;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      input, button {
+        width: 90%;
+      }
+
+      .container {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -128,44 +167,35 @@
     <button id="searchBtn" onclick="openProfile()">View Profile</button>
     <br />
     <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    <p>Enter a username and press "Enter" or click "View Profile."</p>
+    <p>Press "Enter" after typing username or click "View Profile"</p>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal for profile viewing -->
   <div id="profileModal" class="modal">
     <div class="modal-content">
-      <iframe id="profileIframe" src=""></iframe>
+      <iframe id="profileIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
       <button class="modal-close" onclick="closeModal()">×</button>
     </div>
   </div>
 
   <script>
-    // Open profile in modal
+    // Open profile in a new tab
     function openProfile() {
       const username = document.getElementById('username').value.trim();
       if (username) {
-        const iframe = document.getElementById('profileIframe');
-        iframe.src = `https://leetcode.com/u/${username}/`;
-        document.getElementById('profileModal').style.display = 'flex';
+        const url = `https://leetcode.com/u/${username}/`;
+        window.open(url, "_blank"); // Open profile in a new tab
       } else {
         alert("Please enter a valid username.");
       }
     }
 
-    // Close modal
-    function closeModal() {
-      const modal = document.getElementById('profileModal');
-      modal.style.display = 'none';
-      const iframe = document.getElementById('profileIframe');
-      iframe.src = ''; // Clear iframe source for cleanup
-    }
-
-    // Dark mode toggle
+    // Toggle dark mode
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
 
-    // Enter key functionality
+    // Enter key functionality to open profile
     document.getElementById('username').addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         openProfile();
@@ -179,6 +209,12 @@
         closeModal();
       }
     });
+
+    // Close modal function
+    function closeModal() {
+      const modal = document.getElementById('profileModal');
+      modal.style.display = 'none';
+    }
   </script>
 </body>
 </html>
