@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="f.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>LeetCode Profile Finder</title>
 
   <style>
@@ -24,6 +24,7 @@
       color: #fff;
       transition: background 0.3s ease, color 0.3s ease;
       overflow: hidden;
+      padding: 1rem; /* Added padding to ensure content doesn't touch edges on mobile */
     }
 
     /* Container Styles */
@@ -35,7 +36,8 @@
       border-radius: 16px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
       max-width: 400px;
-      width: 90%;
+      width: 100%; /* Ensures container takes up available width */
+      margin: 0 auto;
       animation: fadeIn 0.8s ease;
     }
 
@@ -46,14 +48,14 @@
     }
 
     p {
-      font-size: 0.9rem;
+      font-size: 1rem; /* Increased font size for readability */
       color: #666;
       margin-bottom: 1.5rem;
     }
 
     /* Input Box */
     input {
-      width: calc(100% - 20px);
+      width: 100%;
       padding: 0.8rem;
       font-size: 1rem;
       border: 2px solid #ccc;
@@ -61,6 +63,7 @@
       outline: none;
       transition: border-color 0.3s ease;
       margin-bottom: 1.2rem;
+      max-width: 100%; /* Ensure it scales well */
     }
 
     input:focus {
@@ -79,6 +82,7 @@
       border-radius: 12px;
       cursor: pointer;
       transition: background-color 0.3s, transform 0.2s;
+      margin-top: 1rem; /* Spacing between buttons */
     }
 
     button:hover {
@@ -135,15 +139,29 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* Smaller title font size for smaller screens */
+      }
+
+      p {
+        font-size: 0.9rem; /* Smaller paragraph font size */
       }
 
       input {
-        font-size: 0.9rem;
+        font-size: 1rem; /* Make input text larger for readability */
+        padding: 1rem; /* Increase padding for easier typing */
       }
 
       button {
-        font-size: 0.9rem;
+        font-size: 1rem; /* Keep button text readable */
+        padding: 1rem; /* Increase padding for easier clicking */
+      }
+
+      footer {
+        font-size: 0.8rem; /* Smaller footer text for mobile */
+      }
+
+      footer a {
+        font-size: 0.9rem; /* Slightly smaller font for the footer link */
       }
     }
 
