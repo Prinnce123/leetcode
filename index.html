@@ -175,12 +175,12 @@
   </div>
 
   <script>
-    // Function to open LeetCode profile in a new tab
+    // Function to open LeetCode profile in the same tab
     function openProfile() {
       const username = document.getElementById("username").value.trim();
       if (username) {
         const url = `https://leetcode.com/u/${username}/`;
-        window.open(url, "_blank", "noopener noreferrer"); // Opens the profile in a new tab
+        window.location.href = url; // Opens the profile in the same tab
       } else {
         alert("Please enter a valid username.");
       }
