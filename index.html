@@ -193,12 +193,18 @@
   </div>
 
   <script>
-    // Function to open LeetCode profile in the same tab
+    // Function to open LeetCode profile in the same tab or a new tab based on device type
     function openProfile() {
       const username = document.getElementById("username").value.trim();
       if (username) {
         const url = `https://leetcode.com/u/${username}/`;
-        window.location.href = url; // Opens the profile in the same tab
+
+        // Check if the user is on a mobile device (screen width <= 768px)
+        if (window.innerWidth <= 768) {
+          window.location.href = url; // Opens in the same tab on mobile
+        } else {
+          window.open(url, "_blank"); // Opens in a new tab on computer
+        }
       } else {
         alert("Please enter a valid username.");
       }
