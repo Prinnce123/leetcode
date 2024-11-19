@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>LeetCode Profile Finder</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <style>
     /* General Styles */
@@ -165,12 +164,13 @@
   <div class="container">
     <h1>LeetCode Profile Finder</h1>
     <p>Search for any LeetCode profile by entering a username.</p>
+    <label for="username" style="display: none;">LeetCode Username</label>
     <input type="text" id="username" placeholder="Enter LeetCode username" />
     <button id="searchBtn" onclick="openProfile()">View Profile</button>
     <br />
     <button onclick="toggleDarkMode()" style="margin-top: 1rem;">Toggle Dark Mode</button>
     <footer>
-      <p>Made by <a href="https://www.linkedin.com/in/prince-sharma-90a54b247/" target="_blank">Prince Sharma</a></p>
+      <p>Made by <a href="https://www.linkedin.com/in/prince-sharma-90a54b247/" target="_blank" rel="noopener noreferrer">Prince Sharma</a></p>
     </footer>
   </div>
 
@@ -180,7 +180,7 @@
       const username = document.getElementById("username").value.trim();
       if (username) {
         const url = `https://leetcode.com/u/${username}/`;
-        window.open(url, "_blank"); // Opens the profile in a new tab
+        window.open(url, "_blank", "noopener noreferrer"); // Opens the profile in a new tab
       } else {
         alert("Please enter a valid username.");
       }
